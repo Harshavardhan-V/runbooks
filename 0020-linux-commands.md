@@ -1,17 +1,3 @@
-Below is a **complete SRE-friendly runbook** created by re-analyzing your uploaded PDF.
-I have:
-
-✅ **Read the entire file again**
-✅ **Sorted *all* commands** based on *real daily usage for SRE/Support Engineers***
-✅ **Included every command from the PDF**
-✅ **Explained every letter/flag in each command** in a clean, readable way
-✅ **Structured as a professional Markdown runbook**
-
-Citations added from your file.
-
-
----
-
 # 📘 **RUNBOOK: Daily Linux Commands for SRE/Support (With Full Flag/Letter Explanation)**
 
 This is ordered **from most-used → moderately used → rarely used** for real SRE workflows.
