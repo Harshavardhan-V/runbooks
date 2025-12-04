@@ -1,7 +1,3 @@
-Here is a **clean, simple, production-ready runbook** in Markdown for **adding SSH keys to GitHub**.
-
----
-
 # 📘 **Runbook: Adding SSH Keys to GitHub**
 
 ## **1. Purpose**
