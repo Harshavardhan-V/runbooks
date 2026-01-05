@@ -1,0 +1,95 @@
+FROM ubuntu:22.04
+
+LABEL maintainer="SRE Debug Image"
+LABEL description="All-in-one Ubuntu troubleshooting toolbox"
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
+
+# Base update
+RUN apt-get update && apt-get upgrade -y
+
+# Install core debugging tools
+RUN apt-get install -y --no-install-recommends \
+    bash \
+    coreutils \
+    util-linux \
+    procps \
+    psmisc \
+    sudo \
+    ca-certificates \
+    tzdata \
+    file \
+    less \
+    tree \
+    jq \
+    nano \
+    vim \
+    git \
+    rsync \
+    unzip \
+    zip \
+    tar \
+    bc \
+    watch \
+    htop \
+    iotop \
+    sysstat \
+    lsof \
+    strace \
+    tcpdump \
+    iputils-ping \
+    iproute2 \
+    net-tools \
+    bind9-utils \
+    traceroute \
+    mtr \
+    nmap \
+    netcat-openbsd \
+    telnet \
+    whois \
+    curl \
+    wget \
+    httpie \
+    openssl \
+    gnupg \
+    openssh-client \
+    sshpass \
+    socat \
+    iperf3 \
+    ethtool \
+    bridge-utils \
+    arping \
+    conntrack \
+    iptables \
+    nftables \
+    kmod \
+    pciutils \
+    usbutils \
+    cron \
+    acl \
+    attr \
+    locales \
+    man-db \
+    manpages \
+    manpages-posix \
+    manpages-dev \
+    software-properties-common \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install yq (official binary)
+RUN wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 \
+    -O /usr/local/bin/yq && chmod +x /usr/local/bin/yq
+
+# UTF-8 locale
+RUN locale-gen en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+
+# kubectl (optional but very useful)
+RUN curl -LO https://dl.k8s.io/release/$(curl -Ls https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl \
+    && chmod +x kubectl \
+    && mv kubectl /usr/local/bin/
+
+CMD ["/bin/bash"]
